@@ -65,7 +65,7 @@ h2 {
 }
 
 .expense-list li button {
-    background: #dc3545;
+    background: #23c839;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -73,5 +73,5 @@ h2 {
 }
 
 .expense-list li button:hover {
-    background: #c82333;
+    background: #dc3545;
 }
