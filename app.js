@@ -6,12 +6,12 @@ let search = document.querySelector('#search');
 let ul = document.querySelector('#expenseList');
 let object;
 
-let array; 
-let getData = JSON.parse(localStorage.getItem('sandData'));
+let array;
+let getData = JSON.parse(localStorage.getItem('SendData'));
 if (getData) {
-    array=getData
+    array = getData
 } else {
-    array=[];
+    array = [];
 };
 renderscreen(array);
 
@@ -23,7 +23,7 @@ form.addEventListener('submit', event => {
         amount: +amount.value,
     };
     array.push(object);
-    localStorage.setItem('sandData',JSON.stringify(array))
+    localStorage.setItem('SendData', JSON.stringify(array))
     console.log(array);
     renderscreen(array);
     amount.value = ``;
@@ -61,6 +61,7 @@ function renderscreen(expenseArray) {
 // Function to delete an expense
 function deleted(i) {
     array.splice(i, 1);
+    updateLocalstorage();
     renderscreen(array);
 }
 
@@ -75,6 +76,7 @@ function edit(i) {
     if (updateAmount && updateAmount.trim() !== ``) {
         array[i].amount = +updateAmount;
     }
+    updateLocalstorage();
     renderscreen(array);
 }
 
@@ -85,4 +87,6 @@ search.addEventListener('input', () => {
     renderscreen(filteredExpenses);
 });
 
-
+function updateLocalstorage() {
+    localStorage.setItem(`SendData`, JSON.stringify(getData))
+};
